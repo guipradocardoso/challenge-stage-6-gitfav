@@ -2,36 +2,71 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 :root {
   font-size: 62.5%;
-
-  --ff-primary: "poppins", sans-serif;
-  --text-color: hsla(240, 9%, 89%, 1);
-  --text-remove: #f75a68;
-  --bg: #000;
-  --bg-button: #065e7c;
-  --button-hover: #fff;
-  --bg-input: #06181c;
-  --bg-theader: #092d38;
-  --bg-row-odd: rgba(6, 22, 27, 0.5);
-  --bg-row-even: hsla(192, 65%, 7%, 1);
-  --h2-empty-state: hsla(189, 4%, 32%, 1);
-  --bg-empty-state: hsla(192, 62%, 3%, 1);
+  --ff-primary: "Roboto", sans-serif;
+  --bg-body: hsl(0, 5%, 5%);
+  --bg-theader: hsla(194, 72%, 13%, 1);
+  --bg-input: hsla(240, 6%, 51%, 1);
+  --bt-remove: hsla(355, 91%, 66%, 1);
+  --bg-add: hsla(195, 91%, 25%, 1);
+  --bt-add: hsla(0, 0%, 100%, 1);
+  --bg-no-fav: hsla(195, 61%, 6%, 50%);
+  --h3: hsla(189, 4%, 32%, 1);
+  --bg-odd: rgba(6, 22, 27, 0.5);
+  --bg-even: #06181c;
+  --text-span: hsla(240, 9%, 89%, 0.7);
 }
 
-body {
-  font-size: 1.6rem;
-  color: var(--text-color);
-  background-color: var(--bg);
-}
-
-body * {
+input,
+button {
   font-family: var(--ff-primary);
 }
 
-.sr-only {
+body {
+  width: 100vw;
+  height: 100vw;
+  font-family: var(--ff-primary);
+  background-color: var(--bg-body);
+  color: hsla(240, 9%, 89%, 1);
+  font-size: 1.6rem;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 3rem;
+}
+
+header .logo {
+  display: flex;
+  padding: 1.5rem 0 0;
+  align-items: center;
+  gap: 1rem;
+}
+header .logo svg path {
+  fill: #f1f1f1;
+}
+
+header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  margin-top: 11rem;
+}
+/* header .wrap h1 {
+  letter-spacing: 2px;
+} */
+header .wrap .sr-only {
+  opacity: 0;
   position: absolute;
   width: 1px;
   height: 1px;
@@ -43,70 +78,179 @@ body * {
   border-width: 0;
 }
 
-#app {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0 16rem;
-}
-
-header {
+header .wrap .search {
   display: flex;
-  margin: 11.5rem 0 0;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28rem;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.6rem;
-  padding: 1.5rem 0 0;
-}
-
-.search {
-  width: 64rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.search input {
-  border: none;
-  width: 100%;
+  gap: 0.8rem;
   height: 4.8rem;
+}
+
+header .wrap .search input {
+  border: none;
   border-radius: 0.5rem;
   padding: 1.6rem;
-  background-color: var(--bg-input);
-  margin-right: 0.8rem;
+}
+header .wrap .search button {
+  border: none;
+  border-radius: 0.5rem;
 }
 
-.search button {
+header .wrap .search button .ph-star {
+  fill: var(--bt-add);
+  /* display: none; */
+}
+
+header .wrap .search button p {
+  color: var(--bt-add);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 2.4rem;
+  font-style: normal;
+}
+
+header .wrap button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 3.2rem;
+
+  color: var(--bt-add);
+  cursor: pointer;
+  background: var(--bg-add);
+}
+
+header .wrap button:hover {
+  background: var(--bg-add);
+  filter: brightness(1.2);
+}
+
+main {
+  width: 100%;
+}
+
+main .wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  position: relative;
+  margin-top: 7rem;
+  margin-inline: auto;
+
+  width: 100%;
+  max-width: 80rem;
+  max-height: 53.5rem;
+  min-height: 30rem;
+  height: 100%;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  border: 1px solid var(--bg-add);
+  border-radius: 0.5rem;
+  background: var(--bg-no-fav);
+}
+
+main .wrap table * {
+  font-size: 2rem;
+  line-height: 3.2rem;
+  font-weight: 700;
+}
+
+main .wrap table thead tr {
+  position: sticky;
+  top: 0;
+}
+
+main .wrap table img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+main .wrap table {
+  padding: 1rem 2rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+main .wrap .noFavorites {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.8rem;
-  border-radius: 0.5rem;
-  border: none;
-  height: 4.8rem;
-  padding: 1.2rem;
-  background-color: var(--bg-button);
-  color: var(--button-hover);
-  cursor: pointer;
+  gap: 6rem;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+main .wrap .noFavorites img {
+  width: 13rem;
 }
 
-.search button span {
-  font-family: var(--ff-primary);
-  font-size: 1.4rem;
+main .wrap .noFavorites h3 {
+  font-size: 4rem;
   font-weight: 700;
   line-height: 2.4rem;
+  color: var(--h3);
 }
 
-.search button:hover .svg-star {
-  fill: var(--bg-button);
+main .wrap table th:first-child {
+  padding-left: 1rem;
 }
-.search button:hover {
-  color: var(--bg-button);
-  background-color: var(--button-hover);
+
+main .wrap table th {
+  background: var(--bg-theader);
+  text-align: left;
+  font-size: 1.6rem;
+  padding-block: 1rem;
+}
+
+main .wrap table th:first-child {
+  border-top-left-radius: 0.4rem;
+}
+main .wrap table th:last-child {
+  border-top-right-radius: 0.4rem;
+  width: 5%;
+}
+main .wrap table td:first-child {
+  padding: 1rem 0 1rem 1rem;
+}
+main .wrap table tr {
+  background: var(--bg-even);
+}
+
+main .wrap table tr:nth-child(odd) {
+  background: var(--bg-odd);
+}
+
+main .wrap table .user {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+main .wrap table .user p {
+  color: var(--bt-add);
+}
+
+main .wrap table .user span {
+  color: var(--text-span);
+}
+main .wrap table .user span:hover {
+  filter: brightness(1.2);
+}
+
+main .wrap table button {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 3.2rem;
+  background: none;
+  border: none;
+  padding: 2.4rem 5.3rem;
+  color: var(--bt-remove);
+  cursor: pointer;
 }
